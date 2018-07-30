@@ -4,7 +4,6 @@ var express = require('express'),
     morgan  = require('morgan');
     bodyParser = require('body-parser');
     mongoose = require('mongoose');
-    Character = require('./models/character');
 
 Object.assign=require('object-assign')
 
@@ -110,121 +109,5 @@ console.log('Server running on http://%s:%s', ip, port);
 
 // ============================================================================
 // everything up to here was imported from the default openshift node project
-
-// Use the body-parser package in our application
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-//Mongoose:
-
-// Connect mongoose to mongodb
-  var connect = function () {
-      mongoose.connect(mongoURL);
-  };
-  connect();
-
-  var dbMongoose = mongoose.connection;
-
-  dbMongoose.on('error', function(error){
-      console.log("Error loading the db - "+ error);
-  });
-
-  dbMongoose.on('disconnected', connect);
-
-
-
-
-//  Routing:
-var router = express.Router();
-
-router.get('/', function(req, res) {
-  res.json({ message: 'api route working'});
-});
-
-// Create a new route with the prefix /char
-var charRoute = router.route('/char');
-
-// Create endpoint /api/char for GET
-//Note: This route is for testing and developing only
-charRoute.get(function(req, res) {
-  // Use the Character model to find all Characters
-  Character.find(function(err, chars) {
-    if (err)
-      res.send(err);
-
-    res.json(chars);
-  });
-});
-
-
-// Create endpoint /api/char for POSTS
-charRoute.post(function(req, res) {
-  // Create a new instance of the Charater model
-  var character = new Character();
-
-  // Set the character properties that came from the POST data
-  character.owner = req.body.owner;
-  character.name = req.body.name;
-  character.level = 0;
-
-  // Save the character and check for errors
-  character.save(function(err) {
-    if (err)
-      res.json({ message: 'couldnt save'});
-
-    res.json({ message: 'Character added to game', data: character });
-  });
-});
-
-
-// Create a new route with the /char/:char_id prefix
-var charRoute = router.route('/char/:user_id');
-
-// Create endpoint /api/char/:user_id for GET
-charRoute.get(function(req, res) {
-  // Use the Character model to find a specific character
-  Character.findOne( { 'owner' : req.params.user_id }, function(err, char) {
-    if (err)
-      res.send(err);
-
-    res.json(char);
-  });
-});
-
-
-
-// Create endpoint /api/char/:user_id for PUT
-charRoute.put(function(req, res) {
-  // Use the Character model to find a specific Character
-  Character.findOne( { 'owner' : req.params.user_id }, function(err, char) {
-    if (err)
-      res.send(err);
-
-    // Update the characters level
-    char.level = req.body.newLevel;
-
-    // Save the Character and check for errors
-    char.save(function(err) {
-      if (err)
-        res.send(err);
-
-      res.json(char);
-    });
-  });
-});
-
-// Create endpoint /api/char/:char_id for DELETE
-charRoute.delete(function(req, res) {
-  // Use the Character model to find a specific character and remove it
-  Character.findOneAndRemove( { 'owner' : req.params.user_id }, function(err, char) {
-    if (err)
-      res.send(err);
-
-    res.json({ message: 'Character removed from the database!' });
-  });
-});
-
-app.use('/api', router);
 
 module.exports = app ;
