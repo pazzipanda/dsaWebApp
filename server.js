@@ -2,8 +2,6 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
-    bodyParser = require('body-parser');
-    mongoose = require('mongoose');
 
 Object.assign=require('object-assign')
 
@@ -106,8 +104,5 @@ initDb(function(err){
 
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
-
-// ============================================================================
-// everything up to here was imported from the default openshift node project
 
 module.exports = app ;
