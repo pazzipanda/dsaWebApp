@@ -24,12 +24,13 @@ var router = express.Router();
 app
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-
-  app.use(bodyParser.urlencoded({
+  .engine('html', require('ejs').renderFile)
+  .use(express.static(path.join(__dirname, 'dist/dsaApp')))
+  .use(bodyParser.urlencoded({
       extended: true
     }));
 
-router.get('/', (req, res) => res.render('pages/index'));
+router.get('/', (req, res) => res.sendFile(path.join(__dirname, 'dist/index.html')));
 
 router.route('/objects')
   .get(authController.isAuthenticated, objectController.getObjects)
