@@ -5,9 +5,13 @@ exports.postObject = function(req, res)  {
   var object = new Object();
 
   object.name = req.body.name;
-  object.opt1 = req.body.opt1;
-  object.opt2 = req.body.opt2;
-  object.opt3 = req.body.opt3;
+  var i;
+  for (i = 0; i<req.body.detailsName.length; i++) {
+    this.details.push({
+      name: req.body.detailsName[i],
+      dText: req.body.detailsText[i]
+    })
+  }
 
   object.save(function(err) {
     if (err)
@@ -43,9 +47,13 @@ exports.putObject = function (req, res) {
       res.send(err);
 
     object.name = req.body.name;
-    object.opt1 = req.body.opt1;
-    object.opt2 = req.body.opt2;
-    object.opt3 = req.body.opt3;
+    var j;
+    for (j = 0; i<req.body.detailsName.length; i++) {
+      this.details.push({
+        name: req.body.detailsName[i],
+        dText: req.body.detailsText[i]
+      })
+    }
 
     object.save(function(err) {
       if (err)

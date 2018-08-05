@@ -1,0 +1,17 @@
+<app-text-window (notifyButtonBar)="showObject($event)"></app-text-window>
+<div *ngIf="details.length">
+  <div style="padding-top:3vh;padding-bottom:1vh;font-size:120%">
+    Optionen:
+  </div>
+  <table style="height:5vh;width:95vw;padding-bottom:1vh">
+    <tr>
+      <td *ngFor="let button of details">
+        <button style="width:100%;height:5vh" (click)="showDetail(button.text)">
+          {{button.title}}
+        </button>
+      </td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="!details.length" style="padding-top:14vh">
+</div>

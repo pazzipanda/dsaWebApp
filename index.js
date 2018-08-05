@@ -40,6 +40,23 @@ router.route('/object/:object_id')
   .put(authController.isAuthenticated, objectController.putObject)
   .delete(authController.isAuthenticated, objectController.deleteObject);
 
+router.route('/details')
+  .get(authController.isAuthenticated, objectController.getObjects)
+  .post(authController.isAuthenticated, objectController.postObject);
+router.route('/detail/:detail_id')
+  .get(authController.isAuthenticated, objectController.getObject)
+  .put(authController.isAuthenticated, objectController.putObject)
+  .delete(authController.isAuthenticated, objectController.deleteObject);
+
+router.route('/scenes')
+  .get(authController.isAuthenticated, objectController.getObjects)
+  .post(authController.isAuthenticated, objectController.postObject);
+router.route('/scene/:scene_id')
+  .get(authController.isAuthenticated, objectController.getObject)
+  .put(authController.isAuthenticated, objectController.putObject)
+  .delete(authController.isAuthenticated, objectController.deleteObject);
+
+
 router.route('/users')
   .post(userController.postUsers)
   .get(authController.isAuthenticated, userController.getUsers);

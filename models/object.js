@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 
 //define schema
 var ObjectSchema = new mongoose.Schema({
-  name: String,
-  opt1: String,
-  opt2: String,
-  opt3: String
+  text: String,
+   details: [{
+     title: String,
+     dText: String
+   }]
 });
 
 //export Schema
