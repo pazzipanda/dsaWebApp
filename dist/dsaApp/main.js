@@ -23,6 +23,51 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/app-routing.module.ts":
+/*!***************************************!*\
+  !*** ./src/app/app-routing.module.ts ***!
+  \***************************************/
+/*! exports provided: AppRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _title_title_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./title/title.component */ "./src/app/title/title.component.ts");
+/* harmony import */ var _develope_develope_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./develope/develope.component */ "./src/app/develope/develope.component.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+var routes = [
+    { path: '', redirectTo: '/game', pathMatch: 'full' },
+    { path: 'game', component: _title_title_component__WEBPACK_IMPORTED_MODULE_2__["TitleComponent"] },
+    { path: 'develope', component: _develope_develope_component__WEBPACK_IMPORTED_MODULE_3__["DevelopeComponent"] }
+];
+var AppRoutingModule = /** @class */ (function () {
+    function AppRoutingModule() {
+    }
+    AppRoutingModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]],
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forRoot(routes)]
+        })
+    ], AppRoutingModule);
+    return AppRoutingModule;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app.component.css":
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
@@ -41,7 +86,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-title [childStory]=\"story\"></app-title>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.\n<app-title [childStory]=\"story\"></app-title> -->\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -108,12 +153,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _detail_window_detail_window_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./detail-window/detail-window.component */ "./src/app/detail-window/detail-window.component.ts");
 /* harmony import */ var _button_bar_button_bar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./button-bar/button-bar.component */ "./src/app/button-bar/button-bar.component.ts");
 /* harmony import */ var _title_title_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./title/title.component */ "./src/app/title/title.component.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! .//app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _develope_develope_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./develope/develope.component */ "./src/app/develope/develope.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -131,10 +180,12 @@ var AppModule = /** @class */ (function () {
                 _text_window_text_window_component__WEBPACK_IMPORTED_MODULE_3__["TextWindowComponent"],
                 _detail_window_detail_window_component__WEBPACK_IMPORTED_MODULE_4__["DetailWindowComponent"],
                 _button_bar_button_bar_component__WEBPACK_IMPORTED_MODULE_5__["ButtonBarComponent"],
-                _title_title_component__WEBPACK_IMPORTED_MODULE_6__["TitleComponent"]
+                _title_title_component__WEBPACK_IMPORTED_MODULE_6__["TitleComponent"],
+                _develope_develope_component__WEBPACK_IMPORTED_MODULE_8__["DevelopeComponent"]
             ],
             imports: [
-                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"]
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_7__["AppRoutingModule"]
             ],
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
@@ -340,6 +391,69 @@ var DetailWindowComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_story_service__WEBPACK_IMPORTED_MODULE_2__["StoryService"]])
     ], DetailWindowComponent);
     return DetailWindowComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/develope/develope.component.css":
+/*!*************************************************!*\
+  !*** ./src/app/develope/develope.component.css ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/develope/develope.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/develope/develope.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  develope works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/develope/develope.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/develope/develope.component.ts ***!
+  \************************************************/
+/*! exports provided: DevelopeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DevelopeComponent", function() { return DevelopeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DevelopeComponent = /** @class */ (function () {
+    function DevelopeComponent() {
+    }
+    DevelopeComponent.prototype.ngOnInit = function () {
+    };
+    DevelopeComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-develope',
+            template: __webpack_require__(/*! ./develope.component.html */ "./src/app/develope/develope.component.html"),
+            styles: [__webpack_require__(/*! ./develope.component.css */ "./src/app/develope/develope.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], DevelopeComponent);
+    return DevelopeComponent;
 }());
 
 
@@ -646,7 +760,7 @@ module.exports = "<div style=\"padding:0px\">\n  <h2>\n    {{title}}\n  </h2>\n<
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TitleComponent", function() { return TitleComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _models_story__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/story */ "./src/app/models/story.ts");
+/* harmony import */ var _story_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../story.service */ "./src/app/story.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -659,31 +773,30 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var TitleComponent = /** @class */ (function () {
-    function TitleComponent() {
+    function TitleComponent(sS) {
+        this.sS = sS;
+        this.childStory = this.sS.getStory();
         this.currentScene = 0;
     }
     TitleComponent.prototype.ngOnInit = function () {
-        this.getTitle(this.currentScene);
+        var _this = this;
+        setTimeout(function () { return _this.getTitle(_this.currentScene); }, 0);
     };
     TitleComponent.prototype.getTitle = function (i) {
         this.title = this.childStory.scenes[i].title;
     };
     TitleComponent.prototype.sceneChange = function (i) {
         var _this = this;
-        this.currentScene = i;
+        this.currentScene = 1;
         setTimeout(function () { return _this.getTitle(_this.currentScene); }, 0);
     };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", _models_story__WEBPACK_IMPORTED_MODULE_1__["Story"])
-    ], TitleComponent.prototype, "childStory", void 0);
     TitleComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-title',
             template: __webpack_require__(/*! ./title.component.html */ "./src/app/title/title.component.html"),
             styles: [__webpack_require__(/*! ./title.component.css */ "./src/app/title/title.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_story_service__WEBPACK_IMPORTED_MODULE_1__["StoryService"]])
     ], TitleComponent);
     return TitleComponent;
 }());

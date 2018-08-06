@@ -6,6 +6,8 @@ import { TextWindowComponent } from './text-window/text-window.component';
 import { DetailWindowComponent } from './detail-window/detail-window.component';
 import { ButtonBarComponent } from './button-bar/button-bar.component';
 import { TitleComponent } from './title/title.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { DevelopeComponent } from './develope/develope.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import { TitleComponent } from './title/title.component';
     TextWindowComponent,
     DetailWindowComponent,
     ButtonBarComponent,
-    TitleComponent
+    TitleComponent,
+    DevelopeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

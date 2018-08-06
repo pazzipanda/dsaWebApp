@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Story } from '../models/story';
 import { Scene } from '../models/scene';
+import { StoryService } from '../story.service'
 
 @Component({
   selector: 'app-title',
@@ -12,21 +13,22 @@ import { Scene } from '../models/scene';
 export class TitleComponent implements OnInit {
   title: string;
   currentScene: number;
-  @Input() childStory: Story;
+  childStory: Story;
 
-  constructor() {
+  constructor(private sS: StoryService) {
+    this.childStory = this.sS.getStory();
     this.currentScene = 0;
   }
 
   ngOnInit() {
-  this.getTitle(this.currentScene);
+    setTimeout(() => this.getTitle(this.currentScene), 0);
   }
 
   getTitle(i: number): void {
     this.title = this.childStory.scenes[i].title;
   }
   sceneChange(i: number) {
-    this.currentScene = i;
+    this.currentScene = 1;
     setTimeout(() => this.getTitle(this.currentScene), 0);
   }
 }
