@@ -1,3 +1,4 @@
 <div style="height:45vh;overflow:auto;">
   <a *ngFor="let object of currentScene.text" (click)="lookAtObject(object)">{{object.text}}</a>
 </div>
+<app-button-bar [childObject]="currentObject" (sceneChanger)="sceneChange($event)"></app-button-bar>

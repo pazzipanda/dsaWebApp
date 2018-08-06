@@ -1,9 +1,7 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { Detail } from '../models/detail';
 import { Object } from '../models/object';
-import { ObjectService } from '../object.service';
-import { DetailWindowComponent } from '../detail-window/detail-window.component';
+import { Detail } from '../models/detail';
 
 @Component({
   selector: 'app-button-bar',
@@ -11,24 +9,24 @@ import { DetailWindowComponent } from '../detail-window/detail-window.component'
   styleUrls: ['./button-bar.component.css']
 })
 export class ButtonBarComponent implements OnInit {
-  @Output()
-  notifyDetailWindow: EventEmitter<string> = new EventEmitter<string>();
-
+  @Output() sceneChanger = new EventEmitter();
+  @Input() childObject: Object;
   details: Detail[];
+  currentDetail: Detail;
 
-  constructor(private objectService: ObjectService) {
-
-  }
+  constructor() {  }
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+    this.details = this.childObject.details;
+    this.currentDetail = null;
+    }
+  showDetail(detail: Detail) {
+    this.currentDetail = detail;
+  }
+  sceneChange(scene: number) {
     this.details = [];
-  }
-
-  showDetail(detail: string): void {
-    this.notifyDetailWindow.emit(detail);
-  }
-
-  showObject(object: Object): void {
-    this.details = object.details;
-    this.notifyDetailWindow.emit('');
+    this.sceneChanger.emit(scene);
   }
 }

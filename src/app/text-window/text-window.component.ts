@@ -1,8 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
+import { Story } from '../models/story';
 import { Scene } from '../models/scene';
 import { Object } from '../models/object';
-import { SceneService } from '../scene.service';
 
 @Component({
   selector: 'app-text-window',
@@ -11,20 +11,28 @@ import { SceneService } from '../scene.service';
 })
 export class TextWindowComponent implements OnInit {
   currentScene: Scene;
+  currentObject: Object;
 
-  @Output()
-  notifyButtonBar: EventEmitter<Object> = new EventEmitter<Object>();
+  @Input() childStory: Story;
+  @Output() sceneChanger= new EventEmitter();
 
 
-  constructor(private sceneService: SceneService) {
+  constructor() {
     }
 
   ngOnInit() {
-    this.currentScene = this.sceneService.getScene();
+    this.currentScene = this.getScene(0);
+  }
+  getScene(i: number) : Scene {
+    return this.childStory.scenes[i];
   }
 
   lookAtObject(object: Object): void {
-    this.notifyButtonBar.emit(object);
+    this.currentObject = object;
+  }
+  sceneChange(scene: number) {
+    this.currentScene = this.getScene(scene);
+    this.sceneChanger.emit(scene);
   }
 
 }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Story } from './models/story';
+import { StoryService } from './story.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'DSA Solo App';
+  title: string;
+  story: Story;
+
+  constructor(private storyService: StoryService) {
+
+  }
+
+  ngOnInit() {
+    this.story = this.storyService.getStory();
+    this.title = this.story.title;
+  }
 }
