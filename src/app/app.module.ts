@@ -8,6 +8,9 @@ import { ButtonBarComponent } from './button-bar/button-bar.component';
 import { TitleComponent } from './title/title.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DevelopeComponent } from './develope/develope.component';
+import { DevTextWindowComponent } from './dev-text-window/dev-text-window.component';
+import { DevDetailWindowComponent } from './dev-detail-window/dev-detail-window.component';
+import { DevButtonsBarComponent } from './dev-buttons-bar/dev-buttons-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { DevelopeComponent } from './develope/develope.component';
     DetailWindowComponent,
     ButtonBarComponent,
     TitleComponent,
-    DevelopeComponent
+    DevelopeComponent,
+    DevTextWindowComponent,
+    DevDetailWindowComponent,
+    DevButtonsBarComponent
   ],
   imports: [
     BrowserModule,
